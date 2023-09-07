@@ -2,13 +2,15 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Main } from "../Main/Main";
+import { FlexContainer } from "./Layout.styled";
 
 export const Layout = () => {
   return (
-    <div>
+    <FlexContainer>
       <Header />
-      <Main></Main>
-      <Outlet />
-    </div>
+      <Main>
+        <Outlet />
+      </Main>
+    </FlexContainer>
   );
 };

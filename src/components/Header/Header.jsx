@@ -1,9 +1,12 @@
 import React from "react";
+import NavBar from "../NavBar/NavBar";
+import { FlexContainer } from "./Header.styled";
 
 export const Header = () => {
   return (
-    <div>
+    <FlexContainer>
       <div>Rent a car</div>
-    </div>
+      <NavBar />
+    </FlexContainer>
   );
 };
