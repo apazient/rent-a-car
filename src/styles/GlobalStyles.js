@@ -4,7 +4,6 @@ export const GlobalStyles = createGlobalStyle`
  
 body{
   margin: 0;   
-  overflow:hidden;
   color: ${({ theme }) => theme.colors.main};   
   font-family: Manrope, sans-serif;
   font-size: 14px;

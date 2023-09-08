@@ -1,15 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { getMainCar } from "../../helpers/dataNormalize";
-import { addCarToFav } from "../../redux/Favorite/favoriteSlice";
+import { removeFromFav } from "../../redux/Favorite/favoriteSlice";
 import { setIsModalDetailOpen } from "../../redux/Global/globalSlice";
 
-const CarItem = (props) => {
+const FavoriteItem = (props) => {
   const dispatch = useDispatch();
 
   const car = getMainCar(props);
   const carArray = Object.values(car);
-
   return (
     <li>
       <img src={props.img} alt={props.typ} />
@@ -25,11 +24,11 @@ const CarItem = (props) => {
       >
         Learn more
       </button>
-      <button onClick={() => dispatch(addCarToFav(props))}>
-        Add to favourite
+      <button onClick={() => dispatch(removeFromFav(props.id))}>
+        Remove from favourite
       </button>
     </li>
   );
 };
 
-export default CarItem;
+export default FavoriteItem;

@@ -1,11 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   getAccesAndFunc,
   getConditions,
   getMainDetail,
 } from "../../helpers/dataNormalize";
+import { selectItem } from "../../redux/Global/selectors";
 
-const CarDetails = (props) => {
+const CarDetails = () => {
+  const props = useSelector(selectItem);
   console.log(props);
 
   const main = getMainDetail(props);

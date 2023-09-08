@@ -1,18 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars } from "./operations";
+import { fetchCars, fetchCarsByPage, fetchCarsFirst } from "./operations";
 
 const initialState = {
   cars: [],
+  page: 1,
 };
 const carsSlice = createSlice({
   name: "cars",
   initialState,
-  reducers: {},
+  reducers: {
+    incPage(state, { payload }) {
+      state.page += 1;
+    },
+  },
   extraReducers: (builder) => {
-    builder.addCase(fetchCars.fulfilled, (state, { payload }) => {
-      state.cars = payload;
-    });
+    builder
+      .addCase(fetchCars.fulfilled, (state, { payload }) => {
+        state.cars = payload;
+      })
+      .addCase(fetchCarsFirst.fulfilled, (state, { payload }) => {
+        state.cars = payload;
+      })
+      .addCase(fetchCarsByPage.fulfilled, (state, { payload }) => {
+        if (payload.length !== 0) {
+          state.cars = [...state.cars, ...payload];
+        }
+        return;
+      });
   },
 });
-
+export const { incPage } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;
