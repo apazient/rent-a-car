@@ -22,7 +22,6 @@ const carsSlice = createSlice({
         state.cars = payload;
       })
       .addCase(fetchCarsByPage.fulfilled, (state, { payload }) => {
-        console.log(payload.length);
         if (payload.length !== 0) {
           state.cars = [...state.cars, ...payload];
         }

@@ -10,8 +10,6 @@ export const fetchCars = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await carsInstance.get("/catalog");
-
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -23,11 +21,11 @@ export const fetchCarsByPage = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { cars } = thunkAPI.getState();
-      console.log(cars.page);
 
       const { data } = await carsInstance.get("/catalog", {
         params: { page: cars.page, limit: 8 },
       });
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

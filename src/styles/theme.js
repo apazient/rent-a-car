@@ -1,6 +1,6 @@
 export const theme = {
   colors: {
-    second: "#FFFFF",
+    second: "#FFFFFF",
     link: "#3470FF",
     main: "#121417",
     description: "rgba(18, 20, 23, 0.50)",

@@ -1,4 +1,4 @@
-import { findWordInArray, revStringToArray } from "./helpers";
+import { findWordInArray, minLenString, revStringToArray } from "./helpers";
 
 export const getMainDetail = (data) => {
   return {
@@ -31,14 +31,15 @@ export const getMainCar = (data) => {
   const prem = findWordInArray("premium", access);
 
   return {
+    make: data.make,
+    model: data.model,
     country: revStringToArray(data.address)[0],
     city: revStringToArray(data.address)[1],
     rentalCompany: data.rentalCompany,
     type: data.type,
     year: data.year,
-    model: data.model,
     id: data.id,
-    feacher: prem,
+    feacher: minLenString(access),
     price: data.rentalPrice,
     art: (prem.includes("Premium") || prem.includes("premium")) && "Premium",
   };

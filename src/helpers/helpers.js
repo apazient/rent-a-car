@@ -13,3 +13,8 @@ export const findWordInArray = (word, array) => {
   });
   return match;
 };
+
+//param string, return string
+export const minLenString = (arr) => {
+  return arr.reduce((a, b) => (a.length <= b.length ? a : b));
+};

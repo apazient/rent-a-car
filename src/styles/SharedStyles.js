@@ -15,13 +15,15 @@ export const Box = styled.div`
 `;
 export const Button = styled.button`
   padding: 12px 50px;
+  font-weight: 600;
   border: none;
   border-radius: 12px;
   color: ${(props) => props.$color || "inherit"};
   background-color: ${(props) => props.$bg || "inherit"};
-  box-shadow: ${({ theme }) => theme.shadows.default};
-  &:hover {
+
+  &:hover,
+  &:focus {
     cursor: pointer;
-    background-color: lightgoldenrodyellow;
+    background-color: ${(props) => props.$bg || "inherit"};
   }
 `;

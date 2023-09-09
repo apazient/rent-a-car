@@ -1,27 +1,27 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CarGallery from "../components/CarGallery/CarGallery";
-import { incPage } from "../redux/Cars/carsSlice";
+import CarGallery from "../../components/CarGallery/CarGallery";
+import { incPage } from "../../redux/Cars/carsSlice";
 
-import { selectCars } from "../redux/Cars/selectors";
+import { selectCars } from "../../redux/Cars/selectors";
+import { LoadMore, WrapperCatalog } from "./CatalogPage.styled";
 
 export const CatalogPage = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectCars);
 
-  console.log(data.length);
   return (
-    <div>
+    <WrapperCatalog>
       <CarGallery />
       {data.length && (
-        <button
+        <LoadMore
           onClick={() => {
             dispatch(incPage());
           }}
         >
           Load more
-        </button>
+        </LoadMore>
       )}
-    </div>
+    </WrapperCatalog>
   );
 };

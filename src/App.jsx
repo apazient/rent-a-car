@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
-import { CatalogPage } from "./pages/CatalogPage";
+import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 import FavoritePage from "./pages/FavoritePage";
 
 export const App = () => {

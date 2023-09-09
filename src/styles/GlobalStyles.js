@@ -3,12 +3,13 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
  
 body{
-  margin: 0;   
+  margin: 0 auto;   
   color: ${({ theme }) => theme.colors.main};   
   font-family: Manrope, sans-serif;
   font-size: 14px;
   font-weight:400;
   line-height: 1.5;    
+  max-width: 1214px;
 }
 
 p,
@@ -25,9 +26,8 @@ img {
   max-width: 100%;
    width:100%;  
   height: 100%;
-  border-radius:14px;
-  object-fit: contain ;
-  
+  border-radius: 14px;
+  object-fit:cover; 
 }
 
 ul {
