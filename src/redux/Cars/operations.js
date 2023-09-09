@@ -23,6 +23,8 @@ export const fetchCarsByPage = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { cars } = thunkAPI.getState();
+      console.log(cars.page);
+
       const { data } = await carsInstance.get("/catalog", {
         params: { page: cars.page, limit: 8 },
       });

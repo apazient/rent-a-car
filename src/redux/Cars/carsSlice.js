@@ -9,7 +9,7 @@ const carsSlice = createSlice({
   name: "cars",
   initialState,
   reducers: {
-    incPage(state, { payload }) {
+    incPage(state, _) {
       state.page += 1;
     },
   },
@@ -22,6 +22,7 @@ const carsSlice = createSlice({
         state.cars = payload;
       })
       .addCase(fetchCarsByPage.fulfilled, (state, { payload }) => {
+        console.log(payload.length);
         if (payload.length !== 0) {
           state.cars = [...state.cars, ...payload];
         }

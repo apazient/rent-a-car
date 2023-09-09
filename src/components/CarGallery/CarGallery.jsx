@@ -15,19 +15,15 @@ const CarGallery = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (data.length) {
-      console.log("gallery");
-      return;
-    }
     dispatch(fetchCarsByPage());
-  }, [dispatch, data.length, incPage]);
-
-  const ViewData = () => data.map((car) => <CarItem key={car.id} {...car} />);
+  }, [dispatch, incPage]);
 
   return (
     <>
       <ul>
-        <ViewData></ViewData>
+        {data.map((car) => {
+          return <CarItem key={car.id} {...car} />;
+        })}
       </ul>
       {isModalDetail && (
         <Modal>
