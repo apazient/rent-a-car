@@ -3,16 +3,20 @@ import { useDispatch } from "react-redux";
 import { getMainCar } from "../../helpers/dataNormalize";
 import { addCarToFav } from "../../redux/Favorite/favoriteSlice";
 import { setIsModalDetailOpen } from "../../redux/Global/globalSlice";
+import { ImgWrapper, Item } from "./CarItem.styled";
 
 const CarItem = (props) => {
   const dispatch = useDispatch();
 
   const car = getMainCar(props);
+
   const carArray = Object.values(car);
 
   return (
-    <li>
-      <img src={props.img} alt={props.typ} />
+    <Item>
+      <ImgWrapper>
+        <img src={props.img} alt={props.typ} />
+      </ImgWrapper>
       <div>
         {carArray.map((el) => (
           <span>{el}</span>
@@ -28,7 +32,7 @@ const CarItem = (props) => {
       <button onClick={() => dispatch(addCarToFav(props))}>
         Add to favourite
       </button>
-    </li>
+    </Item>
   );
 };
 

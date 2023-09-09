@@ -1,4 +1,4 @@
-import { revStringToArray } from "./helpers";
+import { findWordInArray, revStringToArray } from "./helpers";
 
 export const getMainDetail = (data) => {
   return {
@@ -27,6 +27,9 @@ export const getConditions = (data) => {
 };
 
 export const getMainCar = (data) => {
+  const access = [...data.accessories, ...data.functionalities];
+  const prem = findWordInArray("premium", access);
+
   return {
     country: revStringToArray(data.address)[0],
     city: revStringToArray(data.address)[1],
@@ -35,7 +38,8 @@ export const getMainCar = (data) => {
     year: data.year,
     model: data.model,
     id: data.id,
-    fuelConsumption: data.fuelConsumption[0],
+    feacher: prem,
     price: data.rentalPrice,
+    art: (prem.includes("Premium") || prem.includes("premium")) && "Premium",
   };
 };
