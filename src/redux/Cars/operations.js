@@ -40,7 +40,6 @@ export const fetchCarsFirst = createAsyncThunk(
         params: { page: 1, limit: 8 },
       });
 
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

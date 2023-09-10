@@ -2,6 +2,8 @@ import { findWordInArray, minLenString, revStringToArray } from "./helpers";
 
 export const getMainDetail = (data) => {
   return {
+    make: data.make,
+    model: data.model,
     country: revStringToArray(data.address)[0],
     city: revStringToArray(data.address)[1],
     id: `Id:${data.id}`,
@@ -20,8 +22,8 @@ export const getAccesAndFunc = (data) => {
 
 export const getConditions = (data) => {
   return {
-    condit: data.rentalConditions,
-    price: `Price: ${data.rentalPrice}$`,
+    condit: data.rentalConditions.split("\n"),
+    price: data.rentalPrice.replace("$", ""),
     mileage: `Mileage: ${data.mileage}`,
   };
 };

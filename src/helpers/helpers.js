@@ -18,3 +18,16 @@ export const findWordInArray = (word, array) => {
 export const minLenString = (arr) => {
   return arr.reduce((a, b) => (a.length <= b.length ? a : b));
 };
+
+export const coloredString = (str) => {
+  const m = str.match(/\d+/);
+  if (m) {
+    const cutEl = m.input.slice(0, m.index);
+    return { cutEl: cutEl, m: m[0] };
+  }
+  return str;
+};
+
+export const formatNumber = (number) => {
+  return number.replace(/(\d{1})/, "$1,");
+};

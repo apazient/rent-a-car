@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { getMainCar } from "../../helpers/dataNormalize";
-import { addCarToFav, removeFromFav } from "../../redux/Favorite/favoriteSlice";
+import { removeFromFav } from "../../redux/Favorite/favoriteSlice";
 import { setIsModalDetailOpen } from "../../redux/Global/globalSlice";
 import {
   Focus,
@@ -17,7 +17,6 @@ import {
 
 const FavoriteItem = (props) => {
   const dispatch = useDispatch();
-  console.log(props);
 
   const car = getMainCar(props);
   const {

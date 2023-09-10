@@ -10,10 +10,8 @@ export const LoadMore = styled.button`
   font-size: 16px;
   color: ${({ theme }) => theme.colors.link};
   margin: 0 0 150px 0;
-`;
-
-export const WrapperCatalog = styled.div`
-  margin: 0 auto;
-  padding: 0 15px;
-  text-align: center;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
 `;

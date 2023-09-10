@@ -8,6 +8,6 @@ export const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(34, 13, 91, 0.23);
+  background-color: rgba(18, 20, 23, 0.5);
   backdrop-filter: blur(3.5px);
 `;

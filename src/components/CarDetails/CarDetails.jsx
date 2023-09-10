@@ -1,50 +1,111 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getAccesAndFunc,
   getConditions,
   getMainDetail,
 } from "../../helpers/dataNormalize";
+import { formatNumber } from "../../helpers/helpers";
+import { closeModal } from "../../redux/Global/globalSlice";
 import { selectItem } from "../../redux/Global/selectors";
+import { Focus, ImgWrapper, Text } from "../../styles/SharedStyles";
+import {
+  Button,
+  Condit,
+  Descr,
+  FocusC,
+  TextD,
+  TitleD,
+  WrapperCondit,
+  WrapperDetail,
+  WrapperSvgX,
+  WrapperTextD,
+  WrapperTextF,
+} from "./CarDetails.styled";
+import { nanoid } from "nanoid";
 
 const CarDetails = () => {
-  const props = useSelector(selectItem);
-  console.log(props);
+  const item = useSelector(selectItem);
+  const dispatch = useDispatch();
 
-  const main = getMainDetail(props);
-  const { country, city, id, year, typ, fuelConsumption, engineSize } = main;
-  const mainArray = Object.values(main);
-  const access = getAccesAndFunc(props);
-  const accessArray = Object.values(access);
-  const condit = getConditions(props);
-  const conditArray = Object.values(condit);
+  const car = getMainDetail(item);
+
+  const { year, fuelConsumption, engineSize, city, country, typ, id } = car;
+
+  const { res } = getAccesAndFunc(item);
+
+  const { condit, price, mileage } = getConditions(item);
 
   return (
-    <li>
-      <img src={props.img} alt={typ} />
-      <div>
-        {mainArray.map((el) => (
-          <span>{el}</span>
+    <WrapperDetail>
+      <ImgWrapper>
+        <img src={item.img} alt={item.typ} />
+      </ImgWrapper>
+
+      <TitleD>
+        {item.make} <Focus> {item.model}</Focus>, {item.year}
+      </TitleD>
+      <WrapperTextD>
+        <Text>{city.slice(0, city.length - 1)}</Text>
+        <Text>{country}</Text>
+        <Text>{id}</Text>
+        <Text>{year}</Text>
+        <Text>{typ}</Text>
+        <Text>{fuelConsumption}</Text>
+        <Text>{engineSize}</Text>
+      </WrapperTextD>
+      <Descr>{item.description}</Descr>
+
+      <TextD>Accessories and functionalities:</TextD>
+      <WrapperTextF>
+        {res.map((el) => (
+          <Text key={nanoid()}>{el}</Text>
         ))}
-      </div>
-      <div>{props.description}</div>
+      </WrapperTextF>
+
       <div>
-        <span>Accessories and functionalities:</span>
-        <div>
-          {accessArray.map((el) => (
-            <span>{el}</span>
-          ))}
-        </div>
+        <TextD>Reantal Conditions:</TextD>
+        <WrapperCondit>
+          {condit.map((el) => {
+            const m = el.match(/\d+/);
+            if (m) {
+              const newEl = m.input.slice(0, m.index);
+              return (
+                <Condit key={nanoid()}>
+                  {newEl} <FocusC> {m[0]}</FocusC>
+                </Condit>
+              );
+            }
+            return <Condit>{el}</Condit>;
+          })}
+          <Condit>
+            Price: <FocusC>{price}$</FocusC>
+          </Condit>
+          <Condit>{formatNumber(mileage)}</Condit>
+        </WrapperCondit>
       </div>
-      <div>
-        <span>Reantal Conditions</span>
-        <div>
-          {conditArray.map((el) => (
-            <span>{el}</span>
-          ))}
-        </div>
-      </div>
-    </li>
+      <Button href="tel:+380730000000">Rental car</Button>
+      <WrapperSvgX
+        onClick={() => {
+          dispatch(closeModal());
+        }}
+      >
+        <svg
+          width="24"
+          height="24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6 6 18M6 6l12 12"
+            stroke="#121417"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </WrapperSvgX>
+    </WrapperDetail>
   );
 };
 
