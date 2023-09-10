@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars, fetchCarsByPage, fetchCarsFirst } from "./operations";
+import { fetchCarsByPage } from "./operations";
 
 const initialState = {
   cars: [],
@@ -17,12 +17,6 @@ const carsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCars.fulfilled, (state, { payload }) => {
-        state.cars = payload;
-      })
-      .addCase(fetchCarsFirst.fulfilled, (state, { payload }) => {
-        state.cars = payload;
-      })
       .addCase(fetchCarsByPage.fulfilled, (state, { payload }) => {
         state.rest = payload.length;
         if (payload.length !== 0) {
