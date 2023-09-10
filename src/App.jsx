@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 import FavoritePage from "./pages/FavoritePage/FavoritePage";
@@ -12,8 +12,8 @@ export const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/favorites" element={<FavoritePage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
-      <Route path="*" element={<h1>Please go back</h1>} />
     </Routes>
   );
 };
