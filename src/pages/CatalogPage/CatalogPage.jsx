@@ -24,7 +24,9 @@ export const CatalogPage = () => {
       <CarGallery />
       {isLoad && <Loader />}
 
-      {restCars > 8 && <LoadMore onClick={handleLoadMore}>Load more</LoadMore>}
+      {!(restCars < 8) && (
+        <LoadMore onClick={handleLoadMore}>Load more</LoadMore>
+      )}
     </WrapperCatalog>
   );
 };
