@@ -38,7 +38,7 @@ const CarItem = (props) => {
   return (
     <Item>
       <ImgWrapper>
-        <img src={props.img} alt={props.typ} />
+        <img src={props.img} alt={props.type} />
       </ImgWrapper>
 
       <Title>
