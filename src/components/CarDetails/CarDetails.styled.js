@@ -11,6 +11,10 @@ export const WrapperDetail = styled.div`
   border-radius: 24px;
   width: 540px;
   padding: 40px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
   background-color: ${({ theme }) => theme.colors.second};
 `;
 
