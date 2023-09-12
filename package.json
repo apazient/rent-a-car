@@ -1,7 +1,7 @@
 {
   "name": "rent-a-car",
   "version": "0.1.0",
-  "homepage": "https://apazient/rent-a-car/",
+  "homepage": "https://apazient.github.io/rent-a-car/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
